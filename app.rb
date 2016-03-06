@@ -27,7 +27,7 @@ get '/details/:id' do
 	@row = Post.find(post_id)
 #Client.where("orders_count = ?", params[:orders])
 
-	@comments = Comment.where("post_id = ?", post_id)	
+	@comments = Comment.where("post_id = ?", post_id).order(created_at: :desc)	
 	erb :details
 end
 
