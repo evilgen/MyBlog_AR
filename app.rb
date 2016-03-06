@@ -8,9 +8,12 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:MyNewBlog.db"
 
 class Post < ActiveRecord::Base
+	validates :autor, presence: true
+	validates :content, presence: true
 end
 
 class Comment < ActiveRecord::Base
+	validates :content, presence: true
 end
 
 get '/' do
@@ -33,16 +36,19 @@ end
 
 post '/new' do
   ps = Post.new params[:post]
-  ps.save
-  erb :new
+  	if ps.save
+  		erb "Thank you for adding a post."
+  	else
+  		@error = ps.errors.full_messages.first
+		erb :new
+  	end
 end
 
 post '/details/:id' do
-  post_id = params[:id]
-  cm = Comment.new do |c|
-  	c.post_id = post_id
-  	c.content = params[:content]
-  end	
-  cm.save
-  redirect to ('/details/' + post_id)
+		post_id = params[:id]
+		cm = Comment.new do |c|
+	  	c.post_id = post_id
+	  	c.content = params[:content]
+	end	
+  	cm.save
 end
