@@ -7,6 +7,8 @@ require 'sinatra/activerecord'
 #Создание подключения к БД при помощи Active Record
 set :database, "sqlite3:MyNewBlog.db"
 
+class Post < ActiveRecord::Base
+end
 
 get '/' do
 	erb :new			
