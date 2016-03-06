@@ -10,6 +10,13 @@ set :database, "sqlite3:MyNewBlog.db"
 class Post < ActiveRecord::Base
 end
 
+class Comment < ActiveRecord::Base
+end
+
+# before do
+# 	@result = Post.new
+# end
+
 get '/' do
 	erb :new			
 end
@@ -24,11 +31,14 @@ get '/index' do
 end
 
 get '/details/:id' do
-  "Hello World"
+	post_id = params[:id]
+	@row = Post.find(post_id)
+	erb :details
 end
 
 post '/new' do
-  @ps = Post.new params[:post]
-  @ps.save
+  ps = Post.new params[:post]
+  ps.save
   erb :new
 end
+

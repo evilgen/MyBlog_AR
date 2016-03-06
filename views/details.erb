@@ -4,22 +4,17 @@
 	<%=@row['content']%>
 			<br />
 			<br />
-			Создан: <%=@row['created_date']%>
+			Создан: <%=@row['created_at']%>
 			<br />
 </p>
 <br />
 <br />
-<h4>Comments:</h4>
 
-<% @comments.each do |comment| %>
-	<p>
-			<%= comment['content'] %>
-			<br />
-			<br />
-			<span style="font-size: 75%; color: #999">Создан: <%= comment['created_date']%></span>
-	</p>
-	<hr />
-<% end %>
+
+
+
+
+
 
 <p>
 	<form action="/details/<%=@row['id']%>" method="POST">
