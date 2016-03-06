@@ -18,6 +18,13 @@ get '/new' do
   erb :new
 end
 
+get '/index' do
+	@results = Post.all
+	erb :index
+end
+
+
+
 post '/new' do
   @ps = Post.new params[:post]
   @ps.save
