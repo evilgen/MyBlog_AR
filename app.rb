@@ -14,20 +14,20 @@ class Comment < ActiveRecord::Base
 end
 
 get '/' do
-	erb :new			
+	@results = Post.all
+	erb :index			
 end
 
 get '/new' do
   erb :new
 end
 
-get '/index' do
-	@results = Post.all
-	erb :index
-end
-
 get '/details/:id' do
-	@row = Post.find(params[:id])
+	post_id = params[:id]
+	@row = Post.find(post_id)
+#Client.where("orders_count = ?", params[:orders])
+
+	@comments = Comment.where("post_id = ?", post_id)	
 	erb :details
 end
 

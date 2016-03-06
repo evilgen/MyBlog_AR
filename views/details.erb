@@ -10,11 +10,15 @@
 <br />
 <br />
 
-
-
-
-
-
+<% @comments.each do |comment| %>
+	<p>
+			<%= comment['content'] %>
+			<br />
+			<br />
+			<span style="font-size: 75%; color: #999">Создан: <%= comment['created_at']%></span>
+	</p>
+	<hr />
+<% end %>
 
 <p>
 	<form action="/details/<%=@row['id']%>" method="POST">
