@@ -17,3 +17,9 @@ end
 get '/new' do
   "Hello World"
 end
+
+post '/new' do
+  @ps = Post.new params[:post]
+  @ps.save
+  erb :new
+end

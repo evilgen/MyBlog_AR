@@ -3,10 +3,10 @@
 	<form action="/new" method="POST">
 		<div class="form-group">
 			<label>Ваше имя</label>
-			<input name="autor" type="text" class="form-control" placeholder="Ваше имя">
+			<input name="post[autor]" type="text" class="form-control" placeholder="Ваше имя">
 		</div>
 
-	  	<textarea name="content" class="form-control" rows="6" placeholder="Введите здесь текст поста"></textarea>
+	  	<textarea name="post[content]" class="form-control" rows="6" placeholder="Введите здесь текст поста"></textarea>
 	  	<br />
 	    <button type="submit" class="btn btn-primary">Добавить</button>
 	</form>
