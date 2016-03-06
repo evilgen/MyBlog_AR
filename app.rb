@@ -23,7 +23,9 @@ get '/index' do
 	erb :index
 end
 
-
+get '/details/:id' do
+  "Hello World"
+end
 
 post '/new' do
   @ps = Post.new params[:post]
