@@ -13,10 +13,6 @@ end
 class Comment < ActiveRecord::Base
 end
 
-# before do
-# 	@result = Post.new
-# end
-
 get '/' do
 	erb :new			
 end
@@ -31,8 +27,7 @@ get '/index' do
 end
 
 get '/details/:id' do
-	post_id = params[:id]
-	@row = Post.find(post_id)
+	@row = Post.find(params[:id])
 	erb :details
 end
 
@@ -42,3 +37,12 @@ post '/new' do
   erb :new
 end
 
+post '/details/:id' do
+  post_id = params[:id]
+  cm = Comment.new do |c|
+  	c.post_id = post_id
+  	c.content = params[:content]
+  end	
+  cm.save
+  redirect to ('/details/' + post_id)
+end
