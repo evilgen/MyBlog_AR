@@ -62,4 +62,5 @@ post '/details/:id' do
 	  	c.content = params[:content]
 	end	
   	cm.save
+  	redirect to('/details/' + post_id)
 end
